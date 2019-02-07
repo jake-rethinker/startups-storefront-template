@@ -1,29 +1,28 @@
 import { h, Component } from 'preact';
 import style from './style';
+import Headroom from 'react-headroom';
 
-import {
-	AppBar,
-	Button,
-} from 'preact-fluid';
+
 class Header extends Component {
-	constructor() {
-		super();
-		this.state ={
-			items: ['Home', 'About', 'Login']
-		};
-	}
-	render() {
-		const aboutBtn = <a href="/about">About</a>;
-		const startBtn = <a href="/get-started">Get Started</a>;
-		return (
-			<AppBar
-			title="Company Name"
-			titleStyle={{color: 'white', padding:'0 10px'}}
-			rightSection={aboutBtn}
-			primary
-			/>
-		);
-	}
+    constructor() {
+        super();
+        this.state ={
+            items: ['Home', 'About', 'Login']
+        };
+    }
+    render() {
+        return (
+        	<div class={style.headerdaddy}>
+				<Headroom class={style.headroom} wrapperStyle={{ position: 'fixed', left: '0', right: '0', fontsize: '25px', maxHeight: '57px', zIndex: '9000' }}>
+					<div className={style.topnav}>
+						<a class={style.left} style="float: left" href="/#"> Company Name </a>
+						<a class={style.right} href="/get-started">Get Started</a>
+						<a className={style.right} href="/about">About</a>
+					</div>
+				</Headroom>
+			</div>
+        );
+    }
 }
 
 export default Header;
